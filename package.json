@@ -1,0 +1,20 @@
+{
+  "name": "dragon-city-api",
+  "version": "1.0.0",
+  "description": "Esta es una API la cual podrás usar para realizar consultas acerca de la información principal de todos los dragones del videojuego Dragon City.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.3"
+  }
+}
