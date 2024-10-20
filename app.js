@@ -8,14 +8,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-// db
-const { models } = require('./models');
-
 // get config vars
 dotenv.config();
 
 // access config var
 process.env.TOKEN_SECRET;
+
+// db
+const { models } = require('./models');
 
 // routes
 const { index } = require('./routes');
