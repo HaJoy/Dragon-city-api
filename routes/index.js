@@ -1,6 +1,11 @@
 
 const fieldValidation = (req) => {
-    let result = !req.body.name || !req.body.element || !req.body.attacks ? false : true;
+    let result;
+    if (!req.body.name || !req.body.element || !req.body.attacks || !req.body.imageURL) {
+        result = false;
+    } else {
+        result = true;
+    };
     return result;
 };
 
@@ -15,7 +20,7 @@ exports.index = (app, models, gate, jwt) => {
     app.post('/dragons/create', async (req, res) => {
 
         if (!fieldValidation(req)) {
-            return res.json({message: '"name", "element" and "attacks" fields are required'});
+            return res.json({message: '"name", "element", "attacks" and "imageURL"fields are required'});
         };
 
         let dragon = req.body;
@@ -26,11 +31,12 @@ exports.index = (app, models, gate, jwt) => {
     app.put('/dragons/:id', async (req, res) => {
         let dragonFound = await models.dragon.findById(req.params.id);
         if (!fieldValidation(req)) {
-            return res.json({message: '"name", "element" and "attacks" fields are required'});
+            return res.json({message: '"name", "element", "attacks" and "imageURL" fields are required'});
         };
         dragonFound.name = req.body.name;
         dragonFound.element = req.body.element;
         dragonFound.attacks = req.body.attacks;
+        dragonFound.imageURL = req.body.imageURL;
 
         const dragonUpdate = await dragonFound.save();
         res.json(dragonUpdate);
