@@ -1,12 +1,20 @@
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const cors = require("cors");
+const path = require("path");
 const express = require('express');
 const app = express();
 
 // parse app
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+
+// fetch middleware
+app.use(cors());
+
+// serves static files to front-end
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // get config vars
 dotenv.config();
@@ -26,7 +34,7 @@ const { dragons } = require('./routes/dragons');
 // auth
 const { generateAccessToken, authenticateToken } = require('./helpers/auth');
 
-index(app, models, generateAccessToken, jwt);
+index(app, models, generateAccessToken, jwt, path);
 docs(app);
 about(app);
 dragons(app);
