@@ -9,10 +9,15 @@ const fieldValidation = (req) => {
     return result;
 };
 
-exports.index = (app, models, gate, jwt) => {
+exports.index = (app, models, gate, jwt, path) => {
+
+
+    app.get('/', async (req, res) => {
+        res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+    })
 
     // This route may change due to the possibility of front-end implementation
-    app.get('/', async (req, res) => {
+    app.get('/dragons', async (req, res) => {
         const dragons = await models.dragon.find().sort({ _id: +1 });
         res.json(dragons);
     });
