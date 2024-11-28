@@ -20,7 +20,7 @@ exports.index = (app, models, gate, jwt) => {
     app.post('/dragons/create', async (req, res) => {
 
         if (!fieldValidation(req)) {
-            return res.json({message: '"name", "element", "attacks" and "imageURL"fields are required'});
+            return res.json({message: '"name", "element", "attacks" and "imageURL" fields are required'});
         };
 
         let dragon = req.body;
