@@ -21,6 +21,11 @@ exports.index = (app, models, gate, jwt, path) => {
         const dragons = await models.dragon.find().sort({ _id: +1 });
         res.json(dragons);
     });
+
+    app.get('/dragons/:id', async (req, res) => {
+        let dragonFound = await models.dragon.findById(req.params.id);
+        res.json(dragonFound);
+    });
     
     app.post('/dragons/create', async (req, res) => {
 
@@ -33,7 +38,7 @@ exports.index = (app, models, gate, jwt, path) => {
         res.json(newDragon);
     });
 
-    app.put('/dragons/:id', async (req, res) => {
+    app.put('/dragons/update/:id', async (req, res) => {
         let dragonFound = await models.dragon.findById(req.params.id);
         if (!fieldValidation(req)) {
             return res.json({message: '"name", "element", "attacks" and "imageURL" fields are required'});
