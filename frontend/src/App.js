@@ -16,7 +16,7 @@ function App() {
         // Cambia la URL por la de tu API
         const fetchDragons = async () => {
             try {
-                const response = await axios.get('https://dragon-city-api.onrender.com');
+                const response = await axios.get('https://dragon-city-api.onrender.com/dragons');
                 setDragons(response.data); // Ajusta según cómo devuelva los datos tu API
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
@@ -24,8 +24,9 @@ function App() {
         };
 
         fetchDragons();
+        
     }, []);
-
+    
   return (
     <Router>
       
