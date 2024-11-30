@@ -4,6 +4,7 @@
 // db config
 const mongoose = require('mongoose');
 const { dragon } = require('./Dragon');
+const { user } = require('./User');
 
 mongo().catch(err => console.log(err));
 
@@ -13,7 +14,8 @@ async function mongo() {
 }
 
 let jsonModels = {
-    dragon : dragon(mongoose)
+    dragon : dragon(mongoose),
+    user : user(mongoose)
 };
 
 exports.models = jsonModels;
