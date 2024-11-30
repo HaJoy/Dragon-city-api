@@ -15,3 +15,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.selec-container {
+  margin: 28px;
+}
+
+.grid-cards-container {
+  justify-content: center;
+  gap: 25px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.element-container {
+  display: flex;
+  justify-content: center;
+}
+
+.skills-container {
+  text-align: start;
+}
+
+.skill {
+  border: 1px #282c34 solid;
+  border-radius: 8px;
+  margin: 5px;
+  text-align: center;
+  align-content: center;
+}

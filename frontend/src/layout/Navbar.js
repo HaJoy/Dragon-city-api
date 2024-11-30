@@ -16,7 +16,6 @@ const Navbar = () => {
             <div className="navbar-nav">
               <Link to={'/'} className="nav-link mx-3 active" aria-current="page">Home</Link>
               <Link to={'/dragons'} className="nav-link mx-3">Dragons</Link>
-              <Link to={'/docs'} className="nav-link mx-3">Docs</Link>
             </div>
           </div>
         </div>
