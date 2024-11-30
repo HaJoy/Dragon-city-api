@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const cors = require("cors");
 const path = require("path");
+const validator = require('validator');
+const bcrypt = require('bcrypt');
+
 const express = require('express');
 const app = express();
 
@@ -27,17 +30,11 @@ const { models } = require('./models');
 
 // routes
 const { index } = require('./routes');
-const { docs } = require('./routes/docs');
-const { about } = require('./routes/about');
-const { dragons } = require('./routes/dragons');
 
 // auth
 const { generateAccessToken, authenticateToken } = require('./helpers/auth');
 
-index(app, models, generateAccessToken, jwt, path);
-docs(app);
-about(app);
-dragons(app);
+index(app, models, generateAccessToken, authenticateToken, jwt, path, validator, bcrypt);
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening port ${process.env.PORT}`);

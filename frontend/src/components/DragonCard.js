@@ -15,19 +15,23 @@ const DragonCard = ({ dragon }, ) => {
 
             <div className='element-container my-2 col-3'>
               {dragon.element.map((element, index) => 
-                <img key={index} src={`images/elements/Element_${element}.webp`} className='img-fluid mx-2' />
+                <img key={index} src={`images/elements/Element_${element}.webp`} className='img-fluid mx-2' alt={element} />
               )}
             </div>
           </div>
         </div>
         
-        <div className='skills-container row'>
-          {dragon.attacks.map((skill, index) => 
-            <div key={index} className='skill col'>
-              <h5>{skill}</h5>
-            </div>
-          )}
+        <div>
+          <h3 className='my-3'>Attacks</h3>
+          <div className='skills-container row'>
+            {dragon.attacks.map((skill, index) => 
+              <div key={index} className='skill col'>
+                <h5>{skill}</h5>
+              </div>
+            )}
+          </div>
         </div>
+        
           
       </div>
       
